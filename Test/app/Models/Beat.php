@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Beat extends Model
 {
-    use HasFactory;
+    use HasFactory;   
 
     protected $guarded = [];
 
