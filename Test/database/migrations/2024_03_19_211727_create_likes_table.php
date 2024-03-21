@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('likes', function (Blueprint $table) {
             $table->id();
-            $table->integer('likeable_id')->onDelete('cascade')->onUpdate('cascade');
+            $table->uuid('likeable_id')->onDelete('cascade')->onUpdate('cascade');
             $table->string('likeable_type');
             $table->enum('like', [0,1]);
-            $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+         
 
             $table->timestamps();
         });

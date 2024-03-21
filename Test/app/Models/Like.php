@@ -10,9 +10,22 @@ class Like extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $guarded = [];   
+
     
-   
+    protected $keyType = 'string';
+
+
+    public $incrementing = false;
+
+    protected static function booted()
+    {
+        static::creating(function($like){
+
+            $like->likeable_id = (string) Str::uuid();
+        });
+    }
+
 
     public function likeable()
     {

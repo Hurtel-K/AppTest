@@ -22,9 +22,9 @@ class LikeControllers extends Controller
                 'messages' => ['errors' => $validator->errors()],
             ], 422);
         }
-         
-          
-         $like = Like::Where('likeable_id',$uuid)
+         $beat= Beat::where('id',$uuid);
+
+         $like = Like::Where('likeable_id',$beat)
                      ->first();
 
         if($like){
@@ -37,9 +37,10 @@ class LikeControllers extends Controller
 
             $like = new Like();
             $like->like = $request->like;
-            $like->likeable_id = $uuid;
           
-            if(  $like->save()){
+
+
+            if( $beat->likes()->save($like)){
             return response()->json([
                 "status" => 1,
                 "message"=>"like effectuer",
@@ -53,10 +54,10 @@ class LikeControllers extends Controller
             ],500);
             }
         }
-        
 
 
-          
-       
+
+
+
         }
 }
